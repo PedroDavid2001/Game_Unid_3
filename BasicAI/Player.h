@@ -27,12 +27,14 @@ class Player : public Object
 {
 private:
     Sprite * sprite;                    // sprite do objeto
+    Sprite* cannon;
     Particles * tail;                   // calda do jogador
     uint tailCount;                     // quantidade de partículas da calda
     
     Controller * gamepad;               // leitura do controle
     bool gamepadOn;                     // controle está ligado
-    
+    float cannonAng;
+
     Timer timer;                        // controla tempo dos disparos
     llong start;                        // marcação de início do disparo
     bool axisCtrl;                      // habilita leitura de disparos

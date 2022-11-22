@@ -2,15 +2,15 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\pedro\Downloads\Lab27\BasicAI\x64\Debug\BasicAI.exe</FullPath>
+      <FullPath>C:\Users\pedro\OneDrive\Documents\Game_Unid_3\x64\Debug\BasicAI.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles>
     <ContentFile>
-      <FullPath>C:\Users\pedro\Downloads\Lab27\BasicAI\BasicAI\Shaders\Pixel.cso</FullPath>
+      <FullPath>C:\Users\pedro\OneDrive\Documents\Game_Unid_3\BasicAI\Shaders\Pixel.cso</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\pedro\Downloads\Lab27\BasicAI\BasicAI\Shaders\Vertex.cso</FullPath>
+      <FullPath>C:\Users\pedro\OneDrive\Documents\Game_Unid_3\BasicAI\Shaders\Vertex.cso</FullPath>
     </ContentFile>
   </ContentFiles>
   <SatelliteDlls />

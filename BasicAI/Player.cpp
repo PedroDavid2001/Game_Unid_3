@@ -26,6 +26,7 @@ Player::Player()
 
     // configuração do objeto
     sprite = new Sprite("Resources/Player.png");
+    cannon = new Sprite("Resources/Player_cannon.png");
     missile = new Image("Resources/Missile.png");
     speed.RotateTo(90.0f);
     speed.ScaleTo(0.0f);
@@ -54,6 +55,7 @@ Player::Player()
 
     // diparo habilitado
     firingAngle = 0.0f;
+    cannonAng = 0.0f;
     keysPressed = false;
     axisCtrl = true;
     keysCtrl = true;
@@ -67,6 +69,7 @@ Player::~Player()
 {
     delete sprite;
     delete missile;
+    delete cannon;
     delete tail;
     delete gamepad;
 }
@@ -193,22 +196,30 @@ void Player::Update()
     else
     {
         // controla movimentação do jogador
-        if (window->KeyDown('D') && window->KeyDown('W'))
+        if (window->KeyDown('D') && window->KeyDown('W')) {
             Move(Vector(45.0f, accel));
-        else if (window->KeyDown('A') && window->KeyDown('W'))
+        }
+        else if (window->KeyDown('A') && window->KeyDown('W')) {
             Move(Vector(135.0f, accel));
-        else if (window->KeyDown('A') && window->KeyDown('S'))
+        }
+        else if (window->KeyDown('A') && window->KeyDown('S')) {
             Move(Vector(225.0f, accel));
-        else if (window->KeyDown('D') && window->KeyDown('S'))
+        }
+        else if (window->KeyDown('D') && window->KeyDown('S')) {
             Move(Vector(315.0f, accel));
-        else if (window->KeyDown('D'))
+        }
+        else if (window->KeyDown('D')) {
             Move(Vector(0.0f, accel));
-        else if (window->KeyDown('A'))
+        }
+        else if (window->KeyDown('A')) {
             Move(Vector(180.0f, accel));
-        else if (window->KeyDown('W'))
+        }
+        else if (window->KeyDown('W')) {
             Move(Vector(90.0f, accel));
-        else if (window->KeyDown('S'))
+        }
+        else if (window->KeyDown('S')) {
             Move(Vector(270.0f, accel));
+        }
         else
             // se nenhuma tecla está pressionada comece a frear
             if (speed.Magnitude() > 0.1f)
@@ -221,34 +232,42 @@ void Player::Update()
         if (window->KeyDown(VK_RIGHT) && window->KeyDown(VK_UP)) {
             keysPressed = true;
             firingAngle = 45.0f;
+            cannonAng = 315.0f;
         } 
         else if (window->KeyDown(VK_LEFT) && window->KeyDown(VK_UP)) {
             keysPressed = true;
             firingAngle = 135.0f;
+            cannonAng = 225.0f;
         }
         else if (window->KeyDown(VK_LEFT) && window->KeyDown(VK_DOWN)) {
             keysPressed = true;
             firingAngle = 225.0f;
+            cannonAng = 135.0f;
         }
         else if (window->KeyDown(VK_RIGHT) && window->KeyDown(VK_DOWN)) {
             keysPressed = true;
             firingAngle = 315.0f;
+            cannonAng = 45.0f;
         }
         else if (window->KeyDown(VK_RIGHT)) {
             keysPressed = true;
             firingAngle = 0.0f;
+            cannonAng = 0.0f;
         }
         else if (window->KeyDown(VK_LEFT)) {
             keysPressed = true;
             firingAngle = 180.0f;
+            cannonAng = 180.0f;
         }
         else if (window->KeyDown(VK_UP)) {
             keysPressed = true;
             firingAngle = 90.0f;
+            cannonAng = 270.0f;
         }
         else if (window->KeyDown(VK_DOWN)) {
             keysPressed = true;
             firingAngle = 270.0f;
+            cannonAng = 90.0f;
         }
         else
         {
@@ -291,6 +310,7 @@ void Player::Update()
 void Player::Draw()
 {
     sprite->Draw(x, y, Layer::MIDDLE, 1.0f, -speed.Angle() + 90.0f);
+    cannon->Draw(x, y, Layer::UPPER, 1.0f, cannonAng);
     tail->Draw(Layer::LOWER, 1.0f);
 }
 

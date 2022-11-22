@@ -1,40 +1,16 @@
-﻿  compilation object save succeeded; see C:\Users\pedro\Downloads\Lab27\BasicAI\BasicAI\Shaders\Pixel.cso
-  compilation object save succeeded; see C:\Users\pedro\Downloads\Lab27\BasicAI\BasicAI\Shaders\Vertex.cso
-  Animation.cpp
-  Audio.cpp
-  Background.cpp
+﻿  BasicAI.cpp
   Blue.cpp
-  Controller.cpp
   Delay.cpp
-  Engine.cpp
   Explosion.cpp
-  Font.cpp
-  Game.cpp
-  Geometry.cpp
-  BasicAI.cpp
-  Graphics.cpp
   Green.cpp
   Hud.cpp
-  Image.cpp
   Magenta.cpp
   Missile.cpp
-  Object.cpp
   Orange.cpp
-  Particles.cpp
   Player.cpp
-  Random.cpp
-  Renderer.cpp
-  Scene.cpp
-  Sound.cpp
-  Sprite.cpp
-  Texture.cpp
-  TileSet.cpp
-  Timer.cpp
-  Vector.cpp
   WallHit.cpp
   WaveB.cpp
   WaveG.cpp
   WaveM.cpp
   WaveO.cpp
-  Window.cpp
-  BasicAI.vcxproj -> C:\Users\pedro\Downloads\Lab27\BasicAI\x64\Debug\BasicAI.exe
+  BasicAI.vcxproj -> C:\Users\pedro\OneDrive\Documents\Game_Unid_3\x64\Debug\BasicAI.exe
