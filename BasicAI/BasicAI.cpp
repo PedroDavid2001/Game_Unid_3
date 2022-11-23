@@ -25,6 +25,7 @@ Image  * BasicAI::blue    = nullptr;
 Image  * BasicAI::green   = nullptr;
 Image  * BasicAI::magenta = nullptr;
 Image  * BasicAI::orange  = nullptr;
+bool    BasicAI::gameOver = false;
 
 // ------------------------------------------------------------------------------
 
@@ -45,7 +46,7 @@ void BasicAI::Init()
     // ajusta volumes
     audio->Volume(START, 0.30f);
     audio->Volume(THEME, 0.60f);
-    audio->Volume(FIRE, 0.10f);
+    audio->Volume(FIRE, 0.30f);
     audio->Volume(EXPLODE, 0.15f);
     audio->Volume(ORANGE, 0.90f);
     audio->Volume(MAGENTA, 0.40f);
@@ -59,7 +60,7 @@ void BasicAI::Init()
     orange  = new Image("Resources/Orange.png");
 
     // carrega/incializa objetos
-    backg   = new Background("Resources/Space.jpg");
+    backg   = new Background("Resources/Space.png");
     player  = new Player();
     scene   = new Scene();  
     hud     = new Hud();
@@ -90,6 +91,11 @@ void BasicAI::Update()
     // sai com o pressionamento da tecla ESC
     if (window->KeyDown(VK_ESCAPE))
         window->Close();
+
+    if (gameOver) {
+        Sleep(2000);
+        window->Close();
+    }
 
     // atualiza cena e calcula colisões
     scene->Update();
@@ -151,8 +157,8 @@ void BasicAI::Draw()
     scene->Draw();
 
     // desenha o painel de informações
-    if (viewHUD)
-        hud->Draw();
+   /* if (viewHUD)
+        hud->Draw();*/
 
     // desenha bounding box
     if (viewBBox)

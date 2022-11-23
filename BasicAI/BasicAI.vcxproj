@@ -169,10 +169,12 @@
     <ClCompile Include="BasicAI.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Green.cpp" />
+    <ClCompile Include="Home.cpp" />
     <ClCompile Include="Hud.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Magenta.cpp" />
     <ClCompile Include="Missile.cpp" />
+    <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Orange.cpp" />
     <ClCompile Include="Particles.cpp" />
@@ -208,10 +210,12 @@
     <ClInclude Include="BasicAI.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Green.h" />
+    <ClInclude Include="Home.h" />
     <ClInclude Include="Hud.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Magenta.h" />
     <ClInclude Include="Missile.h" />
+    <ClInclude Include="Mouse.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Orange.h" />
     <ClInclude Include="Particles.h" />

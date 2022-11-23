@@ -24,7 +24,7 @@ Orange::Orange(float pX, float pY, float ang)
     speed.RotateTo(ang);
     speed.ScaleTo(400);
     RotateTo(-speed.Angle());
-    BBox(new Circle(20.0f));
+    BBox(new Rect(-30.0f, -30.0f, 30.0f, 30.0f));
     MoveTo(pX, pY);
     type = ORANGE;
 

@@ -30,27 +30,18 @@ Player::Player()
     missile = new Image("Resources/Missile.png");
     speed.RotateTo(90.0f);
     speed.ScaleTo(0.0f);
-    BBox(new Circle(18.0f));
+    
+    Point vertex[4] =
+    {
+        Point(-26, -27), Point(-26,27), Point(26,27), Point(26,-27)
+    };
+
+    BBox(new Poly(vertex, 4));
+
     MoveTo(game->CenterX(), game->CenterY());
     type = PLAYER;
 
-    // configuração do emissor de partículas
-    Generator emitter;
-    emitter.imgFile = "Resources/Spark.png";    // arquivo de imagem
-    emitter.angle = 270.0f;                     // ângulo base do emissor
-    emitter.spread = 25;                        // espalhamento em graus
-    emitter.lifetime = 0.3f;                    // tempo de vida em segundos
-    emitter.frequency = 0.010f;                 // tempo entre geração de novas partículas
-    emitter.percentToDim = 0.6f;                // desaparece após 60% da vida
-    emitter.minSpeed = 50.0f;                   // velocidade mínima das partículas
-    emitter.maxSpeed = 100.0f;                  // velocidade máxima das partículas
-    emitter.color.r = 1.0f;                     // componente Red da partícula 
-    emitter.color.g = 1.0f;                     // componente Green da partícula 
-    emitter.color.b = 1.0f;                     // componente Blue da partícula 
-    emitter.color.a = 1.0f;                     // transparência da partícula
-
-    // cria sistema de partículas
-    tail = new Particles(emitter);
+    
     tailCount = 0;
 
     // diparo habilitado
@@ -70,7 +61,7 @@ Player::~Player()
     delete sprite;
     delete missile;
     delete cannon;
-    delete tail;
+    
     delete gamepad;
 }
 
@@ -141,8 +132,28 @@ void Player::Move(Vector && v)
 
 // -------------------------------------------------------------------------------
 
+void Player::OnCollision(Object* obj)
+{
+    switch(obj->Type())
+    {
+    case BLUE:
+    case ORANGE:
+    case GREEN:
+    case MAGENTA:
+        BasicAI::gameOver = true;
+        break;
+        
+    }
+}
+
+// -------------------------------------------------------------------------------
+
+
 void Player::Update()
 {
+    
+    BBox()->RotateTo(-speed.Angle() + 90.0f);
+
     // magnitude do vetor aceleração
     float accel = 40.0f * gameTime;
 
@@ -184,6 +195,7 @@ void Player::Update()
         if (AxisTimed(AxisRX, AxisRY, 0.150f))
         {
             float ang = Line::Angle(Point(0,0), Point(float(gamepad->Axis(AxisRX)), float(gamepad->Axis(AxisRY))));
+            cannonAng = ang;
             BasicAI::audio->Play(FIRE);
             BasicAI::scene->Add(new Missile(ang), STATIC);
         }
@@ -285,24 +297,20 @@ void Player::Update()
     // movimenta objeto pelo seu vetor velocidade
     Translate(speed.XComponent() * 50.0f * gameTime, -speed.YComponent() * 50.0f * gameTime);
 
-    // atualiza calda do jogador
-    tail->Config().angle = speed.Angle() + 180;
-    tail->Generate(x - 10 * cos(speed.Radians()), y + 10 * sin(speed.Radians()));
-    tail->Update(gameTime);
     
     Hud::particles -= tailCount;
-    tailCount = tail->Size();
+    
     Hud::particles += tailCount;
 
     // restringe a área do jogo
-    if (x < 50)
-        MoveTo(50, y);
-    if (y < 50)
-        MoveTo(x, 50);
-    if (x > game->Width() - 50)
-        MoveTo(game->Width() - 50, y);
-    if (y > game->Height() - 50)
-        MoveTo(x, game->Height() - 50);
+    if (x < 90)
+        MoveTo(90, y);
+    if (y < 90)
+        MoveTo(x, 90);
+    if (x > game->Width() - 90)
+        MoveTo(game->Width() - 90, y);
+    if (y > game->Height() - 90)
+        MoveTo(x, game->Height() - 90);
 }
 
 // ---------------------------------------------------------------------------------
@@ -311,7 +319,8 @@ void Player::Draw()
 {
     sprite->Draw(x, y, Layer::MIDDLE, 1.0f, -speed.Angle() + 90.0f);
     cannon->Draw(x, y, Layer::UPPER, 1.0f, cannonAng);
-    tail->Draw(Layer::LOWER, 1.0f);
+    
+        
 }
 
 // -------------------------------------------------------------------------------

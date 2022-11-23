@@ -42,6 +42,7 @@ public:
     static Player * player;         // ponteiro para o jogador
     static Audio * audio;           // sitema de áudio
     static Scene * scene;           // cena do jogo
+    static bool gameOver;
 
     static Image * blue;            // imagem do inimigo azul
     static Image * green;           // imagem do inimigo green

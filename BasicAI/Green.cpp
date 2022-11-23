@@ -20,7 +20,7 @@ Green::Green(float pX, float pY, Player * p)
 {
     player = p;
     sprite = new Sprite(BasicAI::green);
-    BBox(new Circle(20.0f));
+    BBox(new Rect(-30.0f, -30.0f, 30.0f, 30.0f));
     speed.RotateTo(0.0f);
     speed.ScaleTo(0.0f);
     MoveTo(pX, pY);

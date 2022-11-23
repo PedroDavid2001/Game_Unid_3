@@ -31,16 +31,16 @@ Explosion::Explosion(float pX, float pY)
     explosion.percentToDim = 0.8f;                  // desaparece após 60% da vida
     explosion.minSpeed  = 25.0f;                    // velocidade mínima das partículas
     explosion.maxSpeed  = 250.0f;                   // velocidade máxima das partículas
-    explosion.color.r   = color.Rand();             // cor da partícula entre 0 e 1
-    explosion.color.g   = color.Rand();             // cor da partícula entre 0 e 1
-    explosion.color.b   = color.Rand();             // cor da partícula entre 0 e 1
+    explosion.color.r   = 1.0f;             // cor da partícula entre 0 e 1
+    explosion.color.g   = 1.0f;             // cor da partícula entre 0 e 1
+    explosion.color.b   = 1.0f;             // cor da partícula entre 0 e 1
     explosion.color.a   = 1.0f;                     // transparência da partícula
 
     // cria sistema de partículas
     sparks = new Particles(explosion);
 
     // gera 50 partículas na posição indicada
-    sparks->Generate(pX, pY, 50);
+    sparks->Generate(pX, pY, 200);
     type = EXPLOSION;
 
     // incrementa contagem de partículas

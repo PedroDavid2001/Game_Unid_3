@@ -28,7 +28,7 @@ class Player : public Object
 private:
     Sprite * sprite;                    // sprite do objeto
     Sprite* cannon;
-    Particles * tail;                   // calda do jogador
+    
     uint tailCount;                     // quantidade de partículas da calda
     
     Controller * gamepad;               // leitura do controle
@@ -54,6 +54,7 @@ public:
 
     void Move(Vector && v);             // movimenta jogador
     void Update();                      // atualização
+    void OnCollision(Object* obj);
     void Draw();                        // desenho
 }; 
 // ---------------------------------------------------------------------------------

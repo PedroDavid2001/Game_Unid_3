@@ -1,16 +1,2 @@
-﻿  BasicAI.cpp
-  Blue.cpp
-  Delay.cpp
-  Explosion.cpp
-  Green.cpp
-  Hud.cpp
-  Magenta.cpp
-  Missile.cpp
-  Orange.cpp
-  Player.cpp
-  WallHit.cpp
-  WaveB.cpp
-  WaveG.cpp
-  WaveM.cpp
-  WaveO.cpp
-  BasicAI.vcxproj -> C:\Users\pedro\OneDrive\Documents\Game_Unid_3\x64\Debug\BasicAI.exe
+﻿  Explosion.cpp
+  BasicAI.vcxproj -> D:\Users\vitor\git\Game_Unid_3\x64\Debug\BasicAI.exe
